@@ -1,0 +1,71 @@
+<!-- 🖥️ AERO TASKBAR (VISTA STYLE) -->
+<div id="aero-taskbar">
+
+    <!-- 🪟 Segmento 1: Iniciar -->
+    <div class="taskbar-segment start-segment">
+        <div class="start-glow"></div>
+        <button id="start-button" title="Start Menu">
+            <img src="images/icons/opera-menu.png" alt="Start">
+        </button>
+        <span class="start-text">start</span>
+    </div>
+
+    <!-- 🎵 Segmento 2: O Player Limpo -->
+    <div class="taskbar-segment player-segment">
+        <div class="player-glow"></div>
+        <audio id="bg-music"></audio>
+
+        <img src="images/covers/cover6.jpg" alt="Album Cover"
+            class="taskbar-cover" id="album-cover">
+
+        <div class="taskbar-info">
+            <span class="song-title" id="song-title">Popipo (8bit)</span>
+            <span class="artist-name" id="artist-name">robozukin</span>
+        </div>
+
+        <div class="taskbar-controls">
+            <img src="images/icons/button_prev.png" id="prev-btn"
+                class="control-btn" alt="Prev">
+            <img src="images/icons/button_play.png" id="play-btn"
+                class="control-btn play-btn-img" alt="Play">
+            <img src="images/icons/button_next.png" id="next-btn"
+                class="control-btn" alt="Next">
+        </div>
+    </div>
+
+    <!-- 🕒 Segmento 3: Bandeja (Agora com o Ícone de Volume Clicável!) -->
+    <div class="taskbar-segment tray-segment">
+        <div id="tray-volume-btn"
+            style="cursor: pointer; display: flex; align-items: center;"
+            title="Volume">
+            <img src="images/icons/speaker.png" class="tray-icon" alt="Sys Vol">
+        </div>
+        <span class="tray-arrow">▲</span>
+        <div class="tray-clock">
+            <span id="taskbar-time">10:42 AM</span>
+            <span id="taskbar-date">23/08/2026</span>
+        </div>
+    </div>
+
+    <!-- 🔊 O POP-UP DE VOLUME ESCONDIDO -->
+    <div id="volume-popup" class="window glass">
+        <div class="volume-popup-inner">
+            <div class="custom-slider-vertical" id="volume-container">
+                <div class="slider-fill-vertical" id="volume-fill">
+                    <img src="images/icons/knob.png"
+                        class="slider-knob-vertical" alt="knob">
+                </div>
+            </div>
+            <img src="images/icons/speaker.png" class="popup-speaker-icon"
+                alt="Speaker">
+        </div>
+    </div>
+</div>
+
+<script>
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById('taskbar-time').textContent = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        document.getElementById('taskbar-date').textContent = now.toLocaleDateString('en-GB'); 
+    }, 1000);
+</script>
