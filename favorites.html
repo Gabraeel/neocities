@@ -56,7 +56,7 @@ And perhaps by what we refuse to let go.
                                 <input type="radio" name="fav-tab"
                                     id="tab-animes">
                                 <input type="radio" name="fav-tab"
-                                    id="tab-series">
+                                    id="tab-movies">
 
                                 <!-- 🏷️ Os botões das abas -->
                                 <div class="tab-labels">
@@ -64,8 +64,8 @@ And perhaps by what we refuse to let go.
                                         Games</label>
                                     <label for="tab-animes" class="tab-btn">📺
                                         Animes</label>
-                                    <label for="tab-series" class="tab-btn">🎬
-                                        Series</label>
+                                    <label for="tab-movies" class="tab-btn">🎬
+                                        Movies</label>
                                 </div>
 
                                 <!-- 🎮 CONTEÚDO 1: GAMES
@@ -120,16 +120,86 @@ And perhaps by what we refuse to let go.
                                 <!-- 📺 CONTEÚDO 2: ANIMES -->
                                 <div class="tab-content" id="content-animes">
                                     <div class="fav-list">
-                                        <!-- Caixas de animes entram aqui -->
-                                        <p class="fav-empty">Anime list is empty right now! 🐾</p>
+
+                                        <div class="fav-card">
+                                            <div class="fav-info">
+                                                <!-- troque por <img src="images/covers/houseki-no-kuni.png" alt="Houseki no Kuni cover" class="fav-cover"> -->
+                                                <div class="fav-cover fav-cover-empty">💎</div>
+                                                <div class="fav-title">Houseki no Kuni</div>
+                                                <div class="fav-stars">⭐⭐⭐⭐⭐</div>
+                                                <div class="fav-genre">fantasy · drama</div>
+                                            </div>
+                                            <div class="fav-review">
+                                                <h3>Beautiful, fragile and heartbreaking</h3>
+                                                <p>Houseki no Kuni (Land of the Lustrous) follows Phosphophyllite, the youngest and most fragile of a group of living gems who protect each other from the Lunarians, mysterious beings that come from the moon to shatter them and take them away.</p>
+                                                <p>Phos starts as a clumsy, almost useless gem that nobody trusts with anything important, and watching them slowly change, literally piece by piece, is one of the most interesting character arcs I have ever seen. Every gain comes with a loss, and the show never lets you forget that.</p>
+                                                <p>The CGI animation was a risky choice, but it fits perfectly: the gems shine, crack and reflect light in ways that would be impossible in traditional 2D. The fights against the Lunarians look like moving paintings, and the soundtrack is calm, strange and melancholic.</p>
+                                                <p>It is a story about identity, about what remains of you when you keep changing, and about the price of wanting to be useful. It looks soft and pretty, but it hits really hard.</p>
+                                                <p>My only complaint is that the anime only adapts the beginning of the manga. I really, really want a second season.</p>
+                                            </div>
+                                            <button class="fav-toggle" aria-label="Expand review" title="Read more"></button>
+                                        </div>
+                                        <div class="fav-card">
+                                            <div class="fav-info">
+                                                <!-- troque por <img src="images/covers/monster.png" alt="Monster cover" class="fav-cover"> -->
+                                                <div class="fav-cover fav-cover-empty">🩺</div>
+                                                <div class="fav-title">Monster</div>
+                                                <div class="fav-stars">⭐⭐⭐⭐⭐</div>
+                                                <div class="fav-genre">thriller · mystery</div>
+                                            </div>
+                                            <div class="fav-review">
+                                                <h3>The scariest villain is a quiet one</h3>
+                                                <p>Monster is the story of Dr. Kenzo Tenma, a brilliant Japanese surgeon in Germany who decides to save the life of a little boy instead of the mayor, following his conscience instead of the hospital's orders. Years later he discovers that the boy he saved, Johan Liebert, grew up to be a monster.</p>
+                                                <p>From there the show becomes a long chase across Germany and Czechia, full of detectives, orphans, ex-agents and ordinary people whose lives were touched by Johan. Every side story feels important, and many of the side characters are as memorable as the main ones.</p>
+                                                <p>Johan is one of the most terrifying villains in fiction precisely because he almost never raises his voice. He just talks, smiles and leaves destruction behind him. Tenma, on the other hand, is a genuinely good person trying to stay good while everything pushes him to do the opposite.</p>
+                                                <p>The pacing is slow and the art is very realistic, so it is not for everyone, but if you like psychological thrillers this is a masterpiece. It makes you think a lot about the value of a life and about what makes someone a monster.</p>
+                                            </div>
+                                            <button class="fav-toggle" aria-label="Expand review" title="Read more"></button>
+                                        </div>
+
                                     </div>
                                 </div>
 
-                                <!-- 🎬 CONTEÚDO 3: SERIES -->
-                                <div class="tab-content" id="content-series">
+                                <!-- 🎬 CONTEÚDO 3: MOVIES -->
+                                <div class="tab-content" id="content-movies">
                                     <div class="fav-list">
-                                        <!-- Caixas de séries entram aqui -->
-                                        <p class="fav-empty">Series list is empty right now! 🐾</p>
+
+                                        <div class="fav-card">
+                                            <div class="fav-info">
+                                                <!-- troque por <img src="images/covers/umamusume-new-era.png" alt="Umamusume: Beginning of a New Era cover" class="fav-cover"> -->
+                                                <div class="fav-cover fav-cover-empty">🏇</div>
+                                                <div class="fav-title">Umamusume: Beginning of a New Era</div>
+                                                <div class="fav-stars">⭐⭐⭐⭐⭐</div>
+                                                <div class="fav-genre">sports · drama</div>
+                                            </div>
+                                            <div class="fav-review">
+                                                <h3>A new era, and the King is in it</h3>
+                                                <p>Umamusume: Pretty Derby – Beginning of a New Era follows Jungle Pocket, a young uma musume who decides she wants to become the strongest after watching a race that changed her life. The movie is all about chasing a dream that feels too big for you.</p>
+                                                <p>The races are incredible. The animation during the final stretches is intense, with the camera running right next to the girls, the crowd screaming and the music building up until it explodes. It feels like watching a real sports final.</p>
+                                                <p>And of course, T.M. Opera O is there being the King she is, dramatic, confident and absolutely shining every time she appears. Seeing her on the big screen as one of the great rivals of this generation made me very happy.</p>
+                                                <p>The story is simple but emotional: rivalry, friendship, frustration and that feeling of not being good enough yet. Even if you have never seen the series, you can enjoy it, but fans will catch a lot of little details.</p>
+                                                <p>Great music, great races, great Opera. What else could I want?</p>
+                                            </div>
+                                            <button class="fav-toggle" aria-label="Expand review" title="Read more"></button>
+                                        </div>
+                                        <div class="fav-card">
+                                            <div class="fav-info">
+                                                <!-- troque por <img src="images/covers/miku-movie.png" alt="Colorful Stage! The Movie: A Miku Who Can't Sing cover" class="fav-cover"> -->
+                                                <div class="fav-cover fav-cover-empty">🎤</div>
+                                                <div class="fav-title">Colorful Stage! The Movie: A Miku Who Can't Sing</div>
+                                                <div class="fav-stars">⭐⭐⭐⭐⭐</div>
+                                                <div class="fav-genre">music · fantasy</div>
+                                            </div>
+                                            <div class="fav-review">
+                                                <h3>A Miku who has lost her voice</h3>
+                                                <p>Hatsune Miku: Colorful Stage! The Movie – A Miku Who Can't Sing takes the characters from Project Sekai and introduces a different Miku: one who appears in a strange new Sekai and, for some reason, cannot sing.</p>
+                                                <p>Ichika and the other groups try to help her find her voice again, and the movie becomes a story about why people sing at all, about feelings that are hard to put into words and about reaching someone who is hurting.</p>
+                                                <p>The concert scenes are the highlight, with bright colors, lots of energy and songs that feel made for a cinema sound system. It is the kind of movie that makes you want to open a rhythm game right after.</p>
+                                                <p>It is very sweet, a little sad in some moments and full of love for Miku and the people who make music with her. As a Miku fan, I could not leave it out of this list.</p>
+                                            </div>
+                                            <button class="fav-toggle" aria-label="Expand review" title="Read more"></button>
+                                        </div>
+
                                     </div>
                                 </div>
 

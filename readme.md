@@ -42,9 +42,11 @@ fonte do texto corrido. Para voltar ao pixel: `--font-text: var(--font-pixel);`
 
 ## Layout (como adicionar janelas sem desalinhar)
 
-O site cabe inteiro na tela: cabeçalho em cima, três colunas embaixo e a barra de
-tarefas por último. Quem rola é o CONTEÚDO de cada janela, então o fim das janelas
-fica sempre visível logo acima da barra de tarefas.
+Cabeçalho em cima, três colunas embaixo e a barra de tarefas por último.
+A coluna do menu (menu + to do list) sempre aparece inteira e define a altura:
+as outras colunas esticam até o mesmo fim, e o CONTEÚDO das janelas delas rola por
+dentro. Se o menu for mais alto que a tela, a página inteira rola um pouco.
+Isso vale para qualquer página, sem precisar mexer em nada.
 
 Todas as páginas têm a mesma estrutura dentro de `<main class="main-body">`:
 

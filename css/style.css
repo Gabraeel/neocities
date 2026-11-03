@@ -125,13 +125,18 @@
 
 /* === 1. BASE E LAYOUT PRINCIPAL === */
 
-/* O site cabe inteiro na tela: cabeçalho em cima, colunas embaixo.
-   Quem rola é o CONTEÚDO de cada janela, então o fim das janelas
-   fica sempre visível (logo acima da barra de tarefas). */
-html,
-body {
-  overflow: hidden;
+/* O site ocupa pelo menos a tela inteira: cabeçalho em cima, colunas embaixo.
+   A coluna do menu sempre aparece inteira; as outras colunas esticam até
+   a mesma altura e o CONTEÚDO das janelas delas rola por dentro.
+   Se o menu for mais alto que a tela, a página inteira rola. */
+html {
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  min-height: 100%;
 }
 
 body {
@@ -148,25 +153,6 @@ body {
   font-family: var(--font-text);
   font-weight: normal;
   text-align: center;
-}
-
-/* Bolhas do fundo: só gradientes com raio fixo em px (nunca esticam) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle 9px at 30% 22%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 46px at 3% 78%, rgba(255, 255, 255, 0.05) 0 62%, rgba(255, 255, 255, 0.55) 90%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 12px at 2% 74%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 26px at 8% 92%, rgba(255, 255, 255, 0.05) 0 60%, rgba(255, 255, 255, 0.5) 90%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 64px at 97% 30%, rgba(255, 255, 255, 0.04) 0 64%, rgba(255, 255, 255, 0.5) 91%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 16px at 96% 25%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 22px at 93% 48%, rgba(255, 255, 255, 0.05) 0 60%, rgba(255, 255, 255, 0.55) 90%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 34px at 99% 88%, rgba(255, 255, 255, 0.05) 0 62%, rgba(255, 255, 255, 0.5) 90%, rgba(255, 255, 255, 0) 100%),
-    radial-gradient(circle 18px at 4% 40%, rgba(255, 255, 255, 0.05) 0 58%, rgba(255, 255, 255, 0.5) 90%, rgba(255, 255, 255, 0) 100%);
 }
 
 img,
@@ -187,8 +173,8 @@ img,
   gap: var(--gap);
   width: 100%;
   max-width: 1280px;
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: 10px 14px var(--dock);
 }
@@ -214,11 +200,10 @@ header {
    Para desligar o "esticar", ponha a classe no-stretch no .main-body.
    ------------------------------------------------------------ */
 .main-body {
-  flex: 1;
-  min-height: 0;
+  flex: 1 0 auto;
   display: grid;
   grid-template-columns: var(--side) minmax(0, 1fr) var(--side);
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-rows: auto;
   gap: var(--gap);
   align-items: stretch;
 }
@@ -235,6 +220,14 @@ header {
   gap: var(--gap);
   min-width: 0;
   min-height: 0;
+}
+
+/* só o menu define a altura da linha: as outras colunas não "empurram"
+   (altura 0) e esticam até a altura do menu ou da tela (min-height 100%) */
+.col,
+.sidebar-right {
+  height: 0;
+  min-height: 100%;
 }
 
 /* janelas de uma coluna encolhem (e rolam por dentro) quando falta espaço */
@@ -982,79 +975,6 @@ p,
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
 }
 
-.start-segment {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 15px 0 10px;
-  border-radius: 6px 0 0 6px;
-}
-
-.start-segment img {
-  width: 28px !important;
-  height: 28px !important;
-  margin-right: 5px;
-  object-fit: contain;
-}
-
-.start-glow {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  width: 45px;
-  height: 45px;
-  transform: translateY(-50%);
-  background: radial-gradient(
-    circle,
-    rgba(255, 200, 120, 0.55) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-#start-button {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  min-height: 42px;
-  margin: 0;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 50%;
-  background: transparent;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-#start-button:hover {
-  box-shadow:
-    0 0 6px 1px rgba(120, 205, 255, 0.85),
-    0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-#start-button img {
-  width: 42px !important;
-  height: 42px !important;
-  margin: 0 !important;
-  object-fit: contain;
-}
-
-.start-text {
-  padding-right: 5px;
-  color: #fff;
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
 .player-segment {
   position: relative;
   display: flex;
@@ -1063,7 +983,6 @@ p,
   height: 100%;
   padding: 0 20px;
   background: transparent !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
   box-shadow: none !important;
 }
@@ -1752,7 +1671,7 @@ p,
 
 #tab-games:checked ~ .tab-labels label[for="tab-games"],
 #tab-animes:checked ~ .tab-labels label[for="tab-animes"],
-#tab-series:checked ~ .tab-labels label[for="tab-series"] {
+#tab-movies:checked ~ .tab-labels label[for="tab-movies"] {
   background: linear-gradient(to bottom, #8fd6ff 0%, #3c9be6 50%, #1f7fd4 51%, #4cb2f2 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 2px rgba(0, 50, 110, 0.3);
   color: #fff;
@@ -1766,7 +1685,7 @@ p,
 
 #tab-games:checked ~ #content-games,
 #tab-animes:checked ~ #content-animes,
-#tab-series:checked ~ #content-series {
+#tab-movies:checked ~ #content-movies {
   display: block;
 }
 
@@ -1820,8 +1739,8 @@ p,
 }
 
 .fav-cover {
-  width: 104px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 8px;
   object-fit: cover;
   border: 2px solid #fff;
@@ -2278,15 +2197,8 @@ body.native-cursor-active * {
 /* o menu aparece inteiro (sem rolagem); o bloquinho ocupa o resto */
 #menu-container > .sidebar-left { flex: none; }
 #menu-container > .sidebar-left > .window-body { overflow: visible; }
-#menu-container > .sticky-note { flex: none; aspect-ratio: 1 / 1; box-sizing: border-box; }
-
-/* se a tela for baixa e o bloquinho não couber, a coluna rola (com a roda do mouse) */
-#menu-container {
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-#menu-container::-webkit-scrollbar { display: none; }
+/* bloquinho: no mínimo um quadrado; cresce se a coluna tiver espaço sobrando */
+#menu-container > .sticky-note { flex: 1 0 auto; aspect-ratio: 1 / 1; box-sizing: border-box; }
 
 /* telas baixas: menu mais compacto pra caber inteiro junto do bloquinho */
 @media (max-height: 900px) and (min-width: 851px) {
@@ -2465,6 +2377,9 @@ body.native-cursor-active * {
     grid-template-rows: auto;
   }
 
+  .col,
+  .sidebar-right { height: auto; min-height: 0; }
+
   .col > *,
   #menu-container > *,
   .sidebar-right > * { flex: none !important; }
@@ -2507,8 +2422,6 @@ body.native-cursor-active * {
     padding: 0 4px !important;
     gap: 2px !important;
   }
-  .start-text { display: none !important; }
-  .start-segment { padding: 0 6px !important; }
   .player-segment {
     flex: 1 !important;
     min-width: 0 !important;
