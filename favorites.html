@@ -20,43 +20,105 @@ And perhaps by what we refuse to let go.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Favorites | Guides's Sanctuary</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/gif" href="images/icons/heart_icon.gif">
     </head>
 
     <body>
+
         <div class="container">
             <div id="header-container"></div>
             <main class="main-body two-columns">
                 <div id="menu-container"></div>
-                <div
-                    style="display: flex; flex-direction: column; gap: 20px; width: 100%; min-width: 0;">
+                <div class="col col-center">
 
                     <article class="content-center window glass active">
                         <div class="title-bar">
-                            <div class="title-bar-text">content, animes,
-                                stuff</div>
+                            <div class="title-bar-text">❤️ My Favorites</div>
                             <div class="title-bar-controls">
                                 <button aria-label="Minimize"></button>
                                 <button aria-label="Maximize"></button>
                                 <button aria-label="Close"></button>
                             </div>
                         </div>
+
                         <div class="window-body">
-                            <h3 style="margin-top: 0;">🔨 UNDER
-                                CONSTRUCTION!</h3>
-                            <p>This part is planned to be filled with my
-                                recomendations, notes and ratings of all the
-                                stuff I liked on the internet.</p>
-                            <p>Feel free to explore other sections of my site on
-                                the navigation menu.</p>
+                            <h2 class="highlight-blue"
+                                style="margin-top: 0;">Stuff I Love!</h2>
+                            <p>~ Feel free to explore my favorite pieces of
+                                media!</p>
+
+                            <!-- 🪄 O SISTEMA DE ABAS MÁGICO -->
+                            <div class="aero-tabs-wrapper">
+                                <!-- 📻 Rádios invisíveis que controlam a lógica -->
+                                <input type="radio" name="fav-tab"
+                                    id="tab-games" checked>
+                                <input type="radio" name="fav-tab"
+                                    id="tab-animes">
+                                <input type="radio" name="fav-tab"
+                                    id="tab-series">
+
+                                <!-- 🏷️ Os botões das abas -->
+                                <div class="tab-labels">
+                                    <label for="tab-games" class="tab-btn">🎮
+                                        Games</label>
+                                    <label for="tab-animes" class="tab-btn">📺
+                                        Animes</label>
+                                    <label for="tab-series" class="tab-btn">🎬
+                                        Series</label>
+                                </div>
+
+                                <hr style="margin: 0 0 15px 0;">
+
+                                <!-- 🎮 CONTEÚDO 1: GAMES -->
+                                <div class="tab-content" id="content-games">
+                                    <div class="fav-grid">
+
+                                        <!-- Exemplo de Cartão de Favorito -->
+                                        <div class="fav-card">
+                                            <img src="images/covers/cover1.png"
+                                                alt="Game Cover"
+                                                class="fav-cover">
+                                            <div
+                                                class="fav-title">Minecraft</div>
+                                            <div class="fav-stars">⭐⭐⭐⭐⭐</div>
+                                            <div class="fav-desc">Sandbox
+                                                masterpiece. C418's soundtrack
+                                                is simply magical!</div>
+                                        </div>
+
+                                        <!-- Adicione mais <div class="fav-card"> aqui! -->
+
+                                    </div>
+                                </div>
+
+                                <!-- 📺 CONTEÚDO 2: ANIMES -->
+                                <div class="tab-content" id="content-animes">
+                                    <div class="fav-grid">
+                                        <!-- Cartões de Animes entram aqui -->
+                                        <p
+                                            style="text-align: center; width: 100%;">Anime
+                                            list is empty right now! 🐾</p>
+                                    </div>
+                                </div>
+
+                                <!-- 🎬 CONTEÚDO 3: SERIES -->
+                                <div class="tab-content" id="content-series">
+                                    <div class="fav-grid">
+                                        <!-- Cartões de Séries entram aqui -->
+                                        <p
+                                            style="text-align: center; width: 100%;">Series
+                                            list is empty right now! 🐾</p>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </article>
-                    <div id="player-container"></div>
                 </div>
             </main>
         </div>
-
-        <script src="script.js"></script>
+        <div id="player-container"></div>
+        <script src="js/script.js"></script>
     </body>
 </html>

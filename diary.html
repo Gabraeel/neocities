@@ -10,7 +10,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Diary | Guides's Sanctuary</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <link rel="icon" type="image/gif" href="images/icons/moon_icon.gif">
     </head>
 
@@ -21,8 +21,7 @@
 
             <main class="main-body">
                 <div id="menu-container"></div>
-                <div
-                    style="display: flex; flex-direction: column; gap: 20px; width: 100%; min-width: 0;">
+                <div class="col col-center">
 
                     <article class="content-center window glass active">
                         <div class="title-bar">
@@ -36,6 +35,10 @@
                         </div>
 
                         <!-- DIARY CAROUSEL -->
+                        <!-- Para o calendário funcionar, mantenha o título de cada página
+                             no formato:  <h3>Date: Month D, YYYY</h3>
+                             (ou use data-date="YYYY-MM-DD" na .diary-page).
+                             data-note="..." é opcional: aparece sob o calendário. -->
                         <div class="window-body diary-carousel">
                             <div class="diary-inner-box">
 
@@ -44,7 +47,7 @@
 
                                 <div class="diary-pages-container">
                                     <!-- 📅 PAGE 5 (ACTUAL) -->
-                                    <div class="diary-page active">
+                                    <div class="diary-page active" data-note="I use Arch btw">
                                         <h3 style="margin-top: 0;">Date: September
                                             27, 2026</h3>
                                         <p>I've spent almost a month distracted and almost 
@@ -165,7 +168,7 @@
                     </article>
                 </div>
 
-                <aside class="sidebar-right">
+                <aside class="sidebar-right col">
                     <div class="window glass active">
                         <div class="title-bar">
                             <div class="title-bar-text">📅 Calendar</div>
@@ -175,16 +178,15 @@
                                 <button aria-label="Close"></button>
                             </div>
                         </div>
-                        <div class="window-body">
-                            <ul style="padding-left: 15px; margin: 0;">
-                                <li><strong>Sep 27:</strong> I use Arch btw</li>
-                            </ul>
+                        <div class="window-body cal-body">
+                            <!-- o calendário é montado pelo calendar.js -->
+                            <div id="aero-calendar" class="cal"></div>
                         </div>
                     </div>
                 </aside>
             </main>
         </div>
         <div id="player-container"></div>
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

@@ -13,8 +13,10 @@ You are
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Importante: faz o 404 achar css/js/imagens mesmo em enderecos fundos (ex.: /abc/def) -->
+        <base href="/">
         <title>404 | Guides's Sanctuary</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
 
         <link rel="icon" type="image/gif" href="images/icons/note_icon.png">
     </head>
@@ -26,8 +28,7 @@ You are
             <main class="main-body two-columns">
                 <div id="menu-container"></div>
 
-                <div
-                    style="display: flex; flex-direction: column; gap: 20px; width: 100%; min-width: 0;">
+                <div class="col col-center">
 
                     <article class="content-center window glass active">
                         <div class="title-bar">
@@ -77,11 +78,11 @@ You are
 
                         </div>
                     </article>
-                    <div id="player-container"></div>
                 </div>
             </main>
         </div>
-        <script src="script.js"></script>
+        <div id="player-container"></div>
+        <script src="js/script.js"></script>
     </body>
 </html>
 <!-- What is it that you seek in this black unending sea of nothing? -->

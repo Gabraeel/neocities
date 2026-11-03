@@ -1,0 +1,36 @@
+# Publica o site no Neocities sempre que você der push na branch main.
+# Precisa do segredo NEOCITIES_API_TOKEN no repositório do GitHub
+# (Settings > Secrets and variables > Actions).
+name: Deploy to Neocities
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # botão "Run workflow" na aba Actions
+
+concurrency:
+  group: deploy-to-neocities
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # copia só os arquivos do site (sem .git, .github e o readme)
+      - name: Montar pasta do site
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' \
+            --exclude 'readme.md' --exclude '.gitignore' ./ _site/
+
+      - name: Deploy to Neocities
+        uses: bcomnes/deploy-to-neocities@v3
+        with:
+          api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
+          dist_dir: _site
+          cleanup: false
+          neocities_supporter: false
+          preview_before_deploy: true
