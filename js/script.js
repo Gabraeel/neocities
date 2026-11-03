@@ -103,6 +103,15 @@ document.addEventListener("click", function (e) {
   if (mascot) {
     handleOperaClick(mascot);
   }
+
+  // G. Favorites: seta que abre/fecha a review
+  const favToggle = e.target.closest('.fav-toggle');
+  if (favToggle) {
+    const card = favToggle.closest('.fav-card');
+    const isOpen = card.classList.toggle('open');
+    favToggle.setAttribute('aria-label', isOpen ? 'Collapse review' : 'Expand review');
+    favToggle.title = isOpen ? 'Show less' : 'Read more';
+  }
 });
 
 // --- TM OPERA O EASTER EGG --- //

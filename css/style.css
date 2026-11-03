@@ -1712,44 +1712,51 @@ p,
 }
 
 
-/* === 11. FAVORITOS (ABAS E CARTÕES) === */
+/* === 11. FAVORITOS (ABAS E CAIXAS DE REVIEW) === */
 .aero-tabs-wrapper input[type="radio"] {
   display: none;
 }
 
+/* barra única de botões, centralizada */
 .tab-labels {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-bottom: 10px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 4px auto 16px;
+  overflow: hidden;
+  border: 1px solid #7fb4de;
+  border-radius: 999px;
+  background: var(--gloss);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 2px 5px rgba(20, 80, 140, 0.25);
 }
 
 .tab-btn {
-  padding: 6px 15px;
-  border: 1px solid #a9bdd6;
-  border-bottom: 0;
-  border-radius: 3px 3px 0 0;
-  background: linear-gradient(to bottom, #f6f9fc, #dfe9f5);
-  box-shadow: inset 0 1px 0 #fff;
+  padding: 7px 22px;
+  border-left: 1px solid rgba(110, 160, 205, 0.55);
   color: var(--ink);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.12s ease, border-color 0.12s ease;
+  transition: background-color 0.12s ease;
 }
 
+.tab-btn:first-child { border-left: 0; padding-left: 26px; }
+.tab-btn:last-child  { padding-right: 26px; }
+
 .tab-btn:hover {
-  border-color: var(--hot-border);
-  background: var(--grad-hot);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(200, 235, 255, 0.6));
 }
 
 #tab-games:checked ~ .tab-labels label[for="tab-games"],
 #tab-animes:checked ~ .tab-labels label[for="tab-animes"],
 #tab-series:checked ~ .tab-labels label[for="tab-series"] {
-  border-color: var(--sel-border);
-  background: linear-gradient(to bottom, #ffffff, #e3f0fc);
-  box-shadow: inset 0 2px 0 #5b9bd8;
-  color: var(--ink);
+  background: linear-gradient(to bottom, #8fd6ff 0%, #3c9be6 50%, #1f7fd4 51%, #4cb2f2 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 2px rgba(0, 50, 110, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 40, 90, 0.7);
 }
 
 .tab-content {
@@ -1763,60 +1770,170 @@ p,
   display: block;
 }
 
-.fav-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 15px;
-  padding: 5px;
+/* lista de caixas, uma embaixo da outra */
+.fav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fav-empty {
+  text-align: center;
 }
 
 .fav-card {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid rgba(160, 185, 215, 0.6);
-  border-radius: 3px;
-  background: var(--grad-panel);
-  box-shadow: inset 0 1px 0 #fff;
-  text-align: center;
-  transition: background-color 0.12s ease, border-color 0.12s ease;
+  gap: 16px;
+  padding: 12px 14px 12px 12px;
+  border: 1px solid #9ccbee;
+  border-radius: 10px;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, rgba(235, 248, 255, 0.9) 45%, rgba(214, 238, 255, 0.9) 100%);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 2px 6px rgba(30, 90, 150, 0.18);
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .fav-card:hover {
   border-color: var(--sel-border);
-  background: var(--grad-hot);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 0 8px rgba(95, 180, 234, 0.55);
+}
+
+/* coluna da esquerda: capa, nome, estrelas, gênero */
+.fav-info {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  width: 140px;
+  text-align: center;
 }
 
 .fav-cover {
-  width: 100px;
+  width: 104px;
   height: 140px;
   margin-bottom: 8px;
   object-fit: cover;
-  border: 1px solid #9fb0c6;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  border: 2px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #8fbde3, 0 3px 6px rgba(0, 40, 90, 0.3);
+}
+
+/* capa provisória (enquanto não tem imagem) */
+.fav-cover-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #9ee0ff, #3d9be0);
+  font-size: 2.6rem;
 }
 
 .fav-title {
-  margin-bottom: 4px;
-  color: var(--ink);
-  font-size: 0.9rem;
+  margin-bottom: 2px;
+  color: var(--ink-strong);
+  font-size: 1rem;
   line-height: 1.2;
 }
 
 .fav-stars {
   margin-bottom: 6px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 1px;
 }
 
-.fav-desc {
-  color: #555;
+.fav-genre {
+  padding: 2px 10px;
+  border: 1px solid #9ccbee;
+  border-radius: 999px;
+  background: var(--gloss);
+  color: var(--ink);
   font-family: var(--font-label);
-  font-size: 0.65rem;
-  line-height: 1.3;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* coluna da direita: review (compacta até clicar na seta) */
+.fav-review {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  max-height: 196px;
+  overflow: hidden;
+  padding-right: 34px;
+  transition: max-height 0.45s ease;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+}
+
+.fav-review h3 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.fav-review p {
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.fav-card.open .fav-review {
+  max-height: 2000px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* botão redondo de vidro com a seta */
+.fav-toggle {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #5fa7dc;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #e9f8ff 0%, #a8dcff 50%, #6ec1f5 51%, #b5e6ff 100%);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 3px rgba(0, 50, 110, 0.35);
+}
+
+.fav-toggle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2.5px solid #134a85;
+  border-bottom: 2.5px solid #134a85;
+  transform: translate(-50%, -70%) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+.fav-toggle:hover {
+  box-shadow: inset 0 1px 0 #fff, 0 0 7px 1px rgba(120, 205, 255, 0.9);
+}
+
+.fav-card.open .fav-toggle::before {
+  transform: translate(-50%, -30%) rotate(225deg);
+}
+
+@media (max-width: 600px) {
+  .fav-card { flex-direction: column; align-items: center; }
+  .fav-review { padding-right: 0; padding-bottom: 30px; }
+  .tab-btn { padding: 7px 12px; }
 }
 
 
@@ -2085,16 +2202,19 @@ body.native-cursor-active * {
   100% { opacity: 0;   transform: translate(-2px, -2px) scale(1.3); }
 }
 
+/* a Opera fica fora das janelas: sentada na faixa da barra de tarefas,
+   ou grande na margem lateral quando a tela é larga */
 .mascot-container {
   position: fixed;
-  right: 15px;
-  bottom: 35px;
+  right: 12px;
+  bottom: 0;
   z-index: 9997;
   pointer-events: none;
 }
 
 #opera-mascot {
-  width: 150px;
+  display: block;
+  width: 84px;
   height: auto;
   cursor: pointer;
   pointer-events: auto;
@@ -2158,12 +2278,20 @@ body.native-cursor-active * {
 /* o menu aparece inteiro (sem rolagem); o bloquinho ocupa o resto */
 #menu-container > .sidebar-left { flex: none; }
 #menu-container > .sidebar-left > .window-body { overflow: visible; }
-#menu-container > .sticky-note { flex: 1 1 auto; min-height: 60px; box-sizing: border-box; }
+#menu-container > .sticky-note { flex: none; aspect-ratio: 1 / 1; box-sizing: border-box; }
+
+/* se a tela for baixa e o bloquinho não couber, a coluna rola (com a roda do mouse) */
+#menu-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+#menu-container::-webkit-scrollbar { display: none; }
 
 /* telas baixas: menu mais compacto pra caber inteiro junto do bloquinho */
 @media (max-height: 900px) and (min-width: 851px) {
   #menu-container > .sidebar-left > .window-body { padding: 8px 10px; }
-  .sidebar-left a.aero-nav-btn { min-height: 34px; margin-bottom: 2px; padding: 1px 10px; }
+  .sidebar-left a.aero-nav-btn { min-height: 39px; margin-bottom: 2px; padding: 2px 10px; }
   .sidebar-left .nav-section-title { padding-top: 2px; padding-bottom: 2px; }
 }
 
@@ -2289,6 +2417,12 @@ body.native-cursor-active * {
 
 /* === 14. RESPONSIVO === */
 
+@media (min-width: 1600px) {
+  .mascot-container { right: 6px; bottom: 30px; }
+  #opera-mascot { width: 150px; }
+}
+
+
 /* telas baixas (notebook pequeno): cabeçalho mais compacto */
 @media (max-height: 720px) and (min-width: 851px) {
   .banner { height: 112px; }
@@ -2303,8 +2437,6 @@ body.native-cursor-active * {
   .player-guardian { width: 300px; }
   .guardian-left { left: -130px; }
   .guardian-right { right: -130px; }
-  .mascot-container { right: -80px; }
-  #opera-mascot { width: 160px; }
 }
 
 /* celular: as colunas empilham e a página volta a rolar normalmente */
