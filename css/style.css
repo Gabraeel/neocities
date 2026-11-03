@@ -2393,6 +2393,15 @@ body.native-cursor-active * {
   .col,
   .sidebar-right { height: auto; min-height: 0; }
 
+  /* to do list vai pro fim da página (logo acima da Opera) */
+  #menu-container { display: contents; }
+  #menu-container > .sticky-note {
+    order: 99;
+    justify-self: center;
+    width: 260px;
+    margin: 4px auto 14px;
+  }
+
   .col > *,
   #menu-container > *,
   .sidebar-right > * { flex: none !important; }
