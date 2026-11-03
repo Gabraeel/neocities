@@ -1851,7 +1851,9 @@ p,
 
 @media (max-width: 600px) {
   .fav-card { flex-direction: column; align-items: center; }
-  .fav-review { padding-right: 0; padding-bottom: 30px; }
+  .fav-info { position: static; align-self: center; }
+  .fav-review { padding-right: 0; padding-bottom: 30px; text-align: center; }
+  .fav-toggle { right: auto; left: 50%; transform: translateX(-50%); }
   .tab-btn { padding: 7px 12px; }
 }
 
